@@ -1,0 +1,197 @@
+-- MySQL dump 10.14  Distrib 5.5.44-MariaDB, for Linux (x86_64)
+--
+-- Host: localhost    Database: forum
+-- ------------------------------------------------------
+-- Server version	5.5.44-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `forum_categories`
+--
+
+DROP TABLE IF EXISTS `forum_categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `forum_categories` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `group_id` int(11) NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `forum_categories`
+--
+
+LOCK TABLES `forum_categories` WRITE;
+/*!40000 ALTER TABLE `forum_categories` DISABLE KEYS */;
+INSERT INTO `forum_categories` VALUES (1,'Software Issues ',2,1,'2016-01-26 03:36:20','2016-01-26 03:36:20'),(2,'Driver Issues',2,1,'2016-01-26 03:36:38','2016-01-26 03:36:38'),(3,'Antivirus Issues',2,1,'2016-01-26 03:36:56','2016-01-26 03:36:56'),(4,'File Sharing',2,1,'2016-01-26 03:37:48','2016-01-26 03:37:48'),(5,'Ubuntu',3,1,'2016-01-26 03:38:20','2016-01-26 03:38:20'),(6,'CentOS',3,1,'2016-01-26 03:38:43','2016-01-26 03:38:43'),(7,'General Troubleshooting ',4,1,'2016-01-26 03:40:05','2016-01-26 03:40:05'),(8,'Printer Sharing',4,1,'2016-01-26 03:40:18','2016-01-26 03:40:18'),(9,'Hardware Troubleshooting',7,1,'2016-01-27 02:53:09','2016-01-27 02:53:09'),(10,'Random Issues',8,1,'2016-01-27 03:03:26','2016-01-27 03:03:26'),(11,'Local Server Access (TSR, st-server etc.)',6,1,'2016-01-27 03:05:07','2016-01-27 03:05:07'),(12,'Proxy Related Discussion',5,1,'2016-01-27 03:06:34','2016-01-27 03:06:34'),(13,'WiFi Access',5,1,'2016-01-27 03:07:47','2016-01-27 03:07:47'),(14,'Random FAQ',1,1,'2016-01-27 20:55:16','2016-01-27 20:55:16'),(15,'Computer Tips & Tricks',1,22,'2016-02-07 20:21:56','2016-02-07 20:21:56'),(16,'Forum Design Ideas',8,22,'2016-02-07 20:23:02','2016-02-07 20:23:02');
+/*!40000 ALTER TABLE `forum_categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `forum_comments`
+--
+
+DROP TABLE IF EXISTS `forum_comments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `forum_comments` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `body` text COLLATE utf8_unicode_ci NOT NULL,
+  `group_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `thread_id` int(11) NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `forum_comments`
+--
+
+LOCK TABLES `forum_comments` WRITE;
+/*!40000 ALTER TABLE `forum_comments` DISABLE KEYS */;
+INSERT INTO `forum_comments` VALUES (1,'You can find it on our \\\\st-server(192.168.1.27) under all driver->motherboard->hp....',2,2,1,1,'2016-01-26 04:59:39','2016-01-26 04:59:39'),(2,'Problem Is solved. Thank you ocean vaiya. ',2,2,1,8,'2016-01-26 05:10:51','2016-01-26 05:10:51'),(3,'welcome... ',2,2,1,1,'2016-01-26 20:15:47','2016-01-26 20:15:47'),(4,'I think you may try to check the status of HDD sata cable connection with its motherboard.\r\n\r\nN.B. Please also be careful regarding warranty issues before opening the CPU.',7,9,3,1,'2016-01-27 03:24:50','2016-01-27 03:24:50'),(5,'I solved that problem & thank you so much ocean vai for your suggestion.',7,9,3,19,'2016-01-27 04:50:13','2016-01-27 04:50:13'),(6,'Though there is a way by rebooting users pc but may be sometimes this will not work. So, I recommend you to edit the \'hosts\' file (as Administrator) under C:\\Windows\\System32\\drivers\\etc by just adding these lines (under 127.0.0.1 localhost)\r\n\r\n172.16.2.11 tsr\r\n\r\nNow you can access the added local server with just typing its names.\r\n\r\nPlease see the related post:\r\nhttp://172.16.15.5/forum/thread/2\r\n\r\nHope this will work.',8,10,4,1,'2016-01-27 20:41:17','2016-01-27 20:41:17'),(7,'EDIT HOST FILE FOR WINDOWS OS:\r\nThe same thing you can do for WINDOWS machine. On Windows Operating Systems, the hosts file is located here- ” C:\\Windows\\System32\\Drivers\\etc\\hosts”.  C – is the drive  where Windows OS had been installed. \r\nOpen the RUN dialog box by pressing “Windows key+R” from keyboard and paste the path-  ” C:\\Windows\\System32\\Drivers\\etc\\hosts”. Open the file by using note pad. Add the following line in the hosts file-\r\n172.16.2.11 tsr\r\n\r\n172.16.2.102 app-center \r\n\r\n192.168.1.27 st-server\r\nSave the file and that’s all.\r\nMake sure you have administrative access/privilege on the computer before attempting to modify it.\r\n',3,5,2,16,'2016-01-27 21:35:30','2016-01-27 21:35:30'),(8,'New os or old os............\r\n\r\n',5,12,6,8,'2016-02-18 01:31:35','2016-02-18 01:31:35'),(9,'Make sure all the DNS & IP settings are in correct format and also you can try it after changing the PC name. If it is old OS then this problem can be occurred due to virus attack, so for that you can also scan that pc with updated anti-virus. If none of them worked, fresh OS can be the best solution. Besides I am also recommending you to do some advance Google:\r\n\r\nhttps://www.google.com/search?client=ubuntu&channel=fs&q=the+network+path+was+not+found+in+domain+add&ie=utf-8&oe=utf-8#channel=fs&q=the+network+path+was+not+found+when+adding+to+domain+windows+7',5,12,6,1,'2016-02-21 21:31:05','2016-02-21 21:31:05');
+/*!40000 ALTER TABLE `forum_comments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `forum_groups`
+--
+
+DROP TABLE IF EXISTS `forum_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `forum_groups` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `forum_groups`
+--
+
+LOCK TABLES `forum_groups` WRITE;
+/*!40000 ALTER TABLE `forum_groups` DISABLE KEYS */;
+INSERT INTO `forum_groups` VALUES (1,'Frequently Asked Questions (FAQ)',1,'2016-01-26 03:35:08','2016-01-26 03:35:08'),(2,'Windows',1,'2016-01-26 03:35:28','2016-01-26 03:35:28'),(3,'Linux',1,'2016-01-26 03:35:35','2016-01-26 03:35:35'),(4,'Printer Issues',1,'2016-01-26 03:35:52','2016-01-26 03:35:52'),(5,'Network Related Issues',1,'2016-01-26 03:41:07','2016-01-26 03:41:07'),(6,'Server Related Issues',1,'2016-01-26 03:41:39','2016-01-26 03:41:39'),(7,'Hardware Issues',1,'2016-01-26 03:42:10','2016-01-26 03:42:10'),(8,'General Discussion',1,'2016-01-26 03:42:29','2016-01-26 03:42:29');
+/*!40000 ALTER TABLE `forum_groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `forum_threads`
+--
+
+DROP TABLE IF EXISTS `forum_threads`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `forum_threads` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `body` text COLLATE utf8_unicode_ci NOT NULL,
+  `group_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `forum_threads`
+--
+
+LOCK TABLES `forum_threads` WRITE;
+/*!40000 ALTER TABLE `forum_threads` DISABLE KEYS */;
+INSERT INTO `forum_threads` VALUES (1,'Need for Graphics driver.','My need HP pro 3330 MT-PC Graphics driver. Please anyone help me.',2,2,8,'2016-01-26 04:31:07','2016-01-26 04:31:07'),(2,'Access all local Servers without IP in Ubuntu','Open the terminal with ctrl+alt+t then type sudo nano /etc/hosts in the terminal to edit \'hosts\' file...\r\n\r\nJust add these lines (under 127.0.0.1 localhost)\r\n\r\n172.16.2.11 tsr\r\n172.16.2.102 app-center   \r\n192.168.1.27 st-server\r\n\r\nNow you can access all the added servers with just typing their names.\r\n\r\nHope this will help us all who are providing linux support.',3,5,1,'2016-01-26 22:20:01','2016-01-26 22:20:01'),(3,'PC boot up problem','Good day,\r\n\r\nYesterday I gave fresh OS to a DELL Optiplex 7020 machine & install driver & other necessary software & it was working fine. After final restarting it did not started as it could not able to load form hard disk. I unplugged all cable & tried again & still it is not working. Any suggestion? ',7,9,19,'2016-01-27 02:58:20','2016-01-27 02:58:20'),(4,'TSR accessing ','Students can not access TSR through typing \\\\TSR. where as it is only working while typing \\\\172.16.2.11. This problem I\'m facing in printer lab. ',8,10,6,'2016-01-27 06:32:15','2016-01-27 06:32:15'),(5,'MATLAB in Ubuntu','Please Help!\r\nIs it possible to install the cracked version of any latest Matlab in Ubuntu?',3,5,1,'2016-02-08 20:38:59','2016-02-08 20:38:59'),(6,'Domain Add Problem','I can not add domain to a pc. Please help me about this issue.\r\nHere are image link\r\nhttps://s24.postimg.org/usnsag9p1/Domain_Problem.png\r\n',5,12,17,'2016-02-17 23:05:48','2016-02-17 23:05:48'),(7,'How to Fix Temporary Profile on Domain Environment','1) At first log on Administrator and delete the users profile from the c:\\users dir.\r\n\r\n2) Then deleting their SID from the registry key\r\n\r\n\\\\HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsNT\\CurrentVersion\\ProfileList\r\n\r\nYou will find that there are two SID\'s the same, but one will have .bak on the end, the other when inspected, will refer to the said username, but will be associated with \"C:\\users\\TEMP\"\r\n\r\nHence why they always get the temporary profile.\r\n\r\nAfter deleting the above, restart the PC and get the user to login again and they should now have their proper SID and path recreated in the regitry.\r\n\r\nThank You.',6,11,17,'2016-02-22 02:45:55','2016-02-22 02:45:55');
+/*!40000 ALTER TABLE `forum_threads` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
+
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` VALUES ('2014_11_30_084955_create_users_table',1),('2014_11_30_085104_create_groups_table',1),('2014_11_30_085233_create_categories_table',1),('2014_11_30_085313_create_forum_threads_table',1),('2014_11_30_085344_create_forum_comments_table',1),('2014_11_30_084955_create_users_table',1),('2014_11_30_085104_create_groups_table',1),('2014_11_30_085233_create_categories_table',1),('2014_11_30_085313_create_forum_threads_table',1),('2014_11_30_085344_create_forum_comments_table',1);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `isAdmin` enum('0','1') COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_username_unique` (`username`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'ocean','wasidmail@gmail.com','$2y$10$VBtsYOBrKKiBoavodqMOxONedqlqOtH5fbvCWm/hCtVq6Nb7npu1a','0','pPFzmc92wMJzQUkC2NmswSmOILkhQb2Xct8C2pK89tHEyH13qaDnnSuETTnw','2016-01-26 03:34:26','2016-02-17 05:58:43'),(2,'nahid5426','nahid.khan@bracits.com','$2y$10$uLFjHZZ7QlM1OIowD5wlPO55p8VLv3nb/SfiNOVOzckleC0q7mQOa','0','JKuDZyDBLq2PHqkJA6C3gFtf9lhxjaxUT5jwiEqnYw54uY4dKq11T4KNmEfA','2016-01-26 04:03:05','2016-01-26 23:25:43'),(3,'Mafruz','mafruzul.bhuiyan@bracits.com','$2y$10$xcz/3mRiQIuKkR2BxV6GruRayyNWvdNwf221C9/Pk44Yg7.psGhea','0','lQDNQ8ZGy1WFxuO5DtGbMddophsYggk82SEjGTFoz9WBJ74s3VY8g5YyOgqc','2016-01-26 04:10:43','2016-02-07 04:54:53'),(4,'mdnaeemmasud','mdnaeem.masud@bracits.com','$2y$10$zlsNhidX/6Wp8gvaC1sU3uaj4PcH8EOfqKlocQMJQdh9pczd3QXLW','0','EDL5HmC4yOn7Sf8863x3BIgxxKpqxYYud9FYhgHo3eJ4o2wTEUWFekWLt5dk','2016-01-26 04:13:58','2016-02-17 20:51:03'),(5,'Urmi Sajjad','urmisajjad.suma@bracits.com','$2y$10$AWyVnYwAf78MlFq.HZ8BfufXg85j0FzUgD4DVQuWsTsIUku9co2Aa','0','Q4WVgjIGs8vuED8xtQptO0J1GBarjDHnVCYK0DVAZbUIM51vRVzhWl4vuEJd','2016-01-26 04:19:23','2016-02-08 00:40:33'),(6,'Moin','moinuddin.biswas@bracits.com','$2y$10$3SqBoS7aOi3SqAS8wUgBW.aQTNGIN1c84858PQ47J/er4A8tjmBUe','0','','2016-01-26 04:20:19','2016-01-26 04:20:19'),(7,'shafi','abdus.shafi@bracits.com','$2y$10$Sgpf4mNX5AwDoCnwVHBPTuVXhUOcCtAfnCHrd1W2jlqqRPR8VFSnW','0','I5NGvuk6fa6PU2U2XTMv33D8q2KgT5HSPfgOovYeQukgyjJqKfvmzgleeByT','2016-01-26 04:22:30','2016-01-26 05:02:06'),(8,'Abdul Malek','abdul.malek@bracits.com','$2y$10$d3P.7YuIRN7dkwvdOD3na.4/6JoYQ7C81c3SZwBF6THQOPBGujnHe','0','QA6h0vbILLLd80odpySOvBmA2BCX326FLAQWmBC00g6pdBsFflVwp4IUHaFb','2016-01-26 04:24:30','2016-02-18 04:56:12'),(9,'Taseen','taseen.muhtadi@bracits.com','$2y$10$6yaQv06tXfXP0Oe/6nBHA.uqYnWe4pHdUQahUkVkGLGkSI9oWZSAC','0','tpypkOdXhy1lc8Mk7VMdW7iDFPBlRE8GlTf3u4faNsqo2btHtYBw6HQ2j5qH','2016-01-26 04:40:16','2016-02-17 05:57:21'),(10,'Minhajur Rahman','minhajur.rahman@bracits.com','$2y$10$UVZMV1qDEVwACErIuLjAu.HOZ1Hzjdc/Oe245e0MPmBlGwvarQxyq','0','fSsxWa9U7e8Oi869022CfiPv3O5EfEIzPSd2b2TUSDhZvl2bLbRzzLawX8oZ','2016-01-26 05:35:11','2016-01-26 07:43:29'),(11,'Alamgir Hossain','alamgir.hossaion@bracits.com','$2y$10$o5kRZPNlerrQ1lfWvYQTFOJfdrKULKz3Sl2dncBD1etqNCqd352nS','0','OeBpUs1MxxprkXThe4BtJd7HrC6jdbE9LyDt0H4i3wY42yeBB3CZjDuYMtxX','2016-01-26 08:05:16','2016-02-07 05:07:08'),(12,'numan','mdnuman.sarwar@bracits.com','$2y$10$Wiw.8egzU2sflj2RBB/TJeOPRc6IgfFSRI81QwMQMAVBP8saXiSQ6','0','','2016-01-26 21:06:10','2016-01-26 21:06:10'),(13,'Erteza','naim.erteza@bracits.com','$2y$10$oqyZpQULcnz6rK3WQWuaXObE/Pd7Tmw.7hULoRvjJ/64sOf7VPorm','0','KkJ1BbolyhTNAwNChoQkQSqBAVPCu1qB5YKowruLbalpOsZ7PJRt97YfJNVN','2016-01-26 21:22:32','2016-02-22 06:41:38'),(14,'Rakesh Sarker','rakesh.sarker@bracits.com','$2y$10$dS6b8NKS3Y8HJFkDKGOOFOYQ4wZiIQF9A4Etxh9hU5rOYNFZzePb.','0','tM4th8cI8Sho8hFkNivEWJ8M8jjZcgnCiSAyoTLQXWEBB5ycy958aXs3xLCg','2016-01-26 21:24:29','2016-01-26 21:24:41'),(15,'Md. Salahuddin','link2cpa@gmail.com','$2y$10$3IUkmKAOCOA/8QEmxA/EAOqV9I4mpIhWIygZspza6.FLy6OOjabA.','0','','2016-01-26 21:26:41','2016-01-26 21:26:41'),(16,'MD.TAUHIDUR RAHMAN','mdtauhidur.rahman@bracits.com','$2y$10$8QDS.3erZp8KLYyDDVCTw.M8TI89SMRjuHe3v.k6kqz6.3QV8mI8m','0','qooBh4yR9G8gbZnZZBFxAnU5N6ApdUTvb4iTARmvkUCWSIguU1D6Mc1Kj67k','2016-01-26 21:55:17','2016-02-11 03:00:10'),(17,'Shohag','wdxshohag@gmail.com','$2y$10$GpLQEmZ67K7.Pu9l7n7Jo.qngqvXQfXqArfVF95lIRcs6c3EXNY/.','0','TEw8jc69DPwEYpztMsmPQAqanS1HssGfRCDQsx50cDr2sklPeQ4cKccASpi1','2016-01-26 22:57:37','2016-02-22 02:48:39'),(18,'galib','mdgalib.ahsan@bracits.com','$2y$10$DicyougHmKGGG/vyjZWJX.wvVYALRgAqFXHH4PCyPX.doWnmkBqHq','0','Iv4DafpS4WEMaq2qB5iQzHSnNCAE3rRL3I20VOIRB8NbgNljLHxdpdwaE7P9','2016-01-26 23:02:44','2016-02-15 04:46:14'),(19,'afsar','afsarul.amin@bracits.com','$2y$10$aw..c0t2Vijmfz/NuWFceO7CGtZt2b7s8vkpK9lUo2aFQE0sCsjQG','0','','2016-01-27 02:48:00','2016-01-27 02:48:00'),(20,'Rashum','rasom_ulab@yahoo.com','$2y$10$KRliW4UK0ecbdT.ocDPVA.aVVNCvlDN90ihvyM7qGq7WghODAZMnG','0','','2016-01-27 21:38:26','2016-01-27 21:38:26'),(21,'pallab','pallab058@gmail.com','$2y$10$iR/TTM9/ijbyg0o4kMPVx.exGKGwIE1/5gyRsT4KiY22Y5KyIuo/W','0','','2016-02-07 04:50:28','2016-02-07 04:50:28'),(22,'Admin','wasid.hossain@bracits.com','$2y$10$McW95KBsgcX1fKnhdf8jn.lEfL6ezvq7tXOgdLh6hZxWbV3EqKogW','1','d6aregJ8TMAVmMzyMvolUKNCJTllHfatV7WB8YMxy5wvSwJo8ou4XG51AyAb','2016-02-07 20:17:30','2016-02-17 05:59:41'),(23,'Sadat','sadat.mursalin@gmail.com','$2y$10$GlJ4PzL1NsyQ.cQUZ4yW/uLJxaRFSNhl.7Toqe1wdciFfbh4kFara','0','7AEVqR1OpGlqDYQo3t6P2DvrrMmo3740wbhaZAQ4vnTylq4WDn8t4vddFLej','2016-02-07 23:42:00','2016-02-14 04:11:39'),(24,'Sayem','sayem@bracu.ac.bd','$2y$10$3bYKMG7tjSA2BlFZq0hbseOlTcIJITOPSzQwIvPQ2fd1H3dOJY72u','0','','2016-02-08 00:43:25','2016-02-08 00:43:25'),(25,'Fahmid Ron','mdfahmid.wasif@bracits.com','$2y$10$RNoAi9GxioU82yvopMBpy.ffON4zhvrhuSXEZ8UXuCCAJOBNFuV46','0','','2016-02-17 21:23:01','2016-02-17 21:23:01');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-02-22 19:30:01

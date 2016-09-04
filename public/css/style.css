@@ -1,0 +1,91 @@
+.panel-body.panel-list-group{
+
+	padding: 0;
+}
+.panel-body.panel-list-group .list-group{
+
+  margin-bottom: 0;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #46443F;
+
+}
+
+.navbar-custom {
+
+	background-color: #46443F;
+
+  border-radius:0;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color:#ffffff;
+}
+
+.navbar-custom .navbar-brand {
+    color:#ffffff;
+}
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+    color: black;
+}
+.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus { 
+
+	text-decoration: none;
+	background-color: black; 
+}
+.navbar-custom .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: black;
+     }
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: black; }
+
+.navbar-custom .navbar-nav .open .dropdown-menu>li>a,.navbar-custom .navbar-nav .open .dropdown-menu {
+    display: block;
+    background-color: #46443F;
+    color: #FFFFFF;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > .active > a:hover {
+  text-decoration: none;
+  background-color: black !important;
+}
+
+.panel >.panel-heading {
+
+    background-color: #46443F !important;
+    color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #46443F;
+}
+
+.breadcrumb > li + li:before {
+    color: #46443F;
+    content: "/";
+    padding: 0 5px;
+}
+.breadcrumb a {
+	color: #46443F;
+}
+.breadcrumb a:hover {
+	color:black;
+}
+
+.well{
+ background:#C8C6C6;
+ box-shadow: 0 0 5px #46443F;
+ border-radius: 10px;
+}
+
+
+hr{
+   border: 1px solid #857E7E;
+   margin: auto;
+}
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 114px;
+}
